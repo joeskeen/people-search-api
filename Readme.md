@@ -6,6 +6,23 @@
 
 The People API uses dotnet core version 3.1. Make sure that you have that version installed before you proceed.
 
+### Requirements
+
+The requirements for the take home web project are as follows:
+- It needs to be written in Angular 2+
+- It needs to display a search box where a user can search for people to display in a list
+    - The search term should include users where any part of their name matches, e.g. a search term of "bob" would return the user "Jimbob Cucumber"
+    - Display the list in a pleasing manner where we can see all of the user's information
+- It needs to provide the ability to create and edit users
+- It needs to provide the ability to slow down the network requests and have the UI handle the delay gracefully
+
+In addition, the app needs to have any 2 of the following:
+- [Reactive forms](https://angular.io/guide/reactive-forms)
+- [NgRx](https://ngrx.io/)
+- [Cashmere](https://cashmere.healthcatalyst.net/)
+
+**Changes to the backend code are not allowed!**
+
 ### Starting the server
 
 Extract the PeopleApi.zip file. Make sure you keep all extracted files intact. From the extracted directory, run
@@ -25,6 +42,8 @@ info: Microsoft.Hosting.Lifetime[0]
 info: Microsoft.Hosting.Lifetime[0]
       Content root path: C:\...
 ```
+
+.NET Core can be downloaded here: https://dotnet.microsoft.com/download
 
 ### Accessing the API
 
