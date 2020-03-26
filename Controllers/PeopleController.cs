@@ -24,7 +24,12 @@ namespace assessment
         [EnableQuery]
         public IActionResult Get(int key)
         {
-            return Ok(_personDbContext.People.Find(key));
+            var person = _personDbContext.People.Find(key);
+            if (person == null)
+            {
+                return NotFound();
+            }
+            return Ok(person);
         }
 
         public async Task<IActionResult> Patch([FromODataUri] int key, [FromBody] Delta<Person> person)
@@ -85,6 +90,19 @@ namespace assessment
                 }
             }
             return Updated(update);
+        }
+
+        public async Task<IActionResult> Post([FromBody] Person person)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            person.Id = 0;
+            var entry = _personDbContext.Add(person);
+            await _personDbContext.SaveChangesAsync();
+            return Created(person);
         }
 
         public async Task<ActionResult> Delete([FromODataUri] int key)
